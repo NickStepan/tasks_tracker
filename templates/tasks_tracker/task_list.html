@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% for task in tasks %}
+
+</br>
+<a href="{% url 'task-detail' task.pk %}">{{ task.title }}</a>
+</br>
+<span>{{ task.status }}</span>
+<span>{{ task.priority }}</span>
+
+{% empty %}
+<span>No Task</span>
+
+{% endfor %}

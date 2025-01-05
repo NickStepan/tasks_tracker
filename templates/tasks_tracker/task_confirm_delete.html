@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+</head>
+
+<body>
+    <h1>Are you sure want to delete?</h1>
+    <p>{{ object.title }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <button type="submit">Delete</button>
+        <button><a href="{% url 'task-list' %}">Return</a></button>
+    </form>
+    
+</body>

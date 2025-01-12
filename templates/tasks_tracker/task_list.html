@@ -1,21 +1,31 @@
 <!DOCTYPE html>
+<html>
 
-<form method="get">
-    {{ form.status.label_tag }}
-    {{ form.status }}
-    <button type="submit">Filter</button>
-</form>
+<head>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
 
+<body>
 
-{% for task in tasks %}
+    <form method="get" class="form-container">
+        {{ form.status.label_tag }}
+        {{ form.status }}
+        <button type="submit">Filter</button>
+    </form>
 
-</br>
-<a href="{% url 'task-detail' task.pk %}">{{ task.title }}</a>
-</br>
-<span>{{ task.status }}</span>
-<span>{{ task.priority }}</span>
+    {% for task in tasks %}
 
-{% empty %}
-<span>No Task</span>
+    <div class="task-container">
+        </br>
+        <a href="{% url 'task-detail' task.pk %}" class="task-title">{{ task.title }}</a>
+        </br>
+        <span class="status">{{ task.status }}</span>
+        <span class="priority">{{ task.priority }}</span>
+    </div>
 
-{% endfor %}
+    {% empty %}
+    <span class="noone">No Task</span>
+
+    {% endfor %}
+</body>
+</html>

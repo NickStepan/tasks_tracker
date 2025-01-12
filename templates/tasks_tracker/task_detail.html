@@ -1,2 +1,24 @@
+<!DOCTYPE html>
+
 <h2>{{task.title}}</h2>
 <p>{{ task.description }}</p>
+
+
+<div>
+    <p>Add comment!</p>
+    <form method="post" >
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit">Add here</button>
+    </form>
+</div>
+
+<div>
+    {% for comment in task.comments.all %}
+        <small>{{ comment.author.username }}</small>
+        <p>{{ comment.content }}</p>
+        <small>{{ comment.created_at }}</small>
+    {% empty %}
+        <p>No comments!</p>
+    {% endfor %}
+</div>
